@@ -1,0 +1,37 @@
+﻿version: '3.4'
+
+networks:
+ dockerapi-dev:
+  driver: bridge
+
+services:
+ dockerapi:
+   image: dockerapi:latest
+   depends_on:
+    - "postgres_image"
+   build:
+     context: .
+     dockerfile: Dockerfile
+   ports:
+    - "8000:80"
+   environment:
+     DefaultConnection: "Server=postgres_image;Port=5432;Database=BlazorMovies;User Id=jontiefer;Password=test1234;"
+   networks:
+     - dockerapi-dev
+
+ postgres_image:
+   image: postgres:13.1
+   ports:
+     - "5432"
+   restart: always
+   volumes:
+     - db_volume:/var/lib/postgresql/data
+     - ./dbscripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+   environment:
+     POSTGRES_USER: "jontiefer"
+     POSTGRES_PASSWORD: "test1234"
+     POSTGRES_DB: "BlazorMovies"
+   networks:
+     - dockerapi-dev
+volumes:
+  db_volume:

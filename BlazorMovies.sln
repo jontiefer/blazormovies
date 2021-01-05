@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovies.Server", "BlazorMovies\Server\BlazorMovies.Server.csproj", "{4C15D732-7813-47FB-B627-3C83A44A40BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovies.Client", "BlazorMovies\Client\BlazorMovies.Client.csproj", "{451439CE-1587-4B59-BF66-F4A8620DABAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovies.Shared", "BlazorMovies\Shared\BlazorMovies.Shared.csproj", "{6AEBBF38-0FCB-4092-85D1-B77837673E2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0063A2AE-00BE-4C4E-8DE7-6AFAE315E2C9}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C15D732-7813-47FB-B627-3C83A44A40BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C15D732-7813-47FB-B627-3C83A44A40BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C15D732-7813-47FB-B627-3C83A44A40BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C15D732-7813-47FB-B627-3C83A44A40BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{451439CE-1587-4B59-BF66-F4A8620DABAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451439CE-1587-4B59-BF66-F4A8620DABAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451439CE-1587-4B59-BF66-F4A8620DABAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451439CE-1587-4B59-BF66-F4A8620DABAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AEBBF38-0FCB-4092-85D1-B77837673E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AEBBF38-0FCB-4092-85D1-B77837673E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AEBBF38-0FCB-4092-85D1-B77837673E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AEBBF38-0FCB-4092-85D1-B77837673E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D26D4E4-309D-4C09-B576-B974E8BDBCD2}
+	EndGlobalSection
+EndGlobal

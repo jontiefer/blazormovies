@@ -1,0 +1,8 @@
+/BlazorMovies/Server/obj/*
+/BlazorMovies/Server/bin/*
+/BlazorMovies/Client/obj/*
+/BlazorMovies/Client/bin/*
+/BlazorMovies/Shared/obj/*
+/BlazorMovies/Shared/bin/*
+/PostGres-TestPwd.txt
+.vs/*
