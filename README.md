@@ -32,10 +32,11 @@ dotnet publish BlazorMovies.Server.csproj -c release -{Output directory of web a
 
 ## (Additional Instructions for Docker Compilation)
 If the application is to be run in a Docker container a small modificiation to the Startup.cs file in the BlazorMovies.Server project must be made.  This is because I had some issues figuring out how to properly use Environment Variables with Docker that will be remedied later, once I understand how it works.  For the time being, perform this simple modification.
-In the Startup.cs file comment out the following line at the top of the file:
+If running in Docker go the Startup.cs file and uncomment the following line at the top of the file if it is comment out:
 ```console
  #define _DOCKER
 ```
+If the application is to be deployed outside of a Docker container or it will access the Machine Environment variables for the connection string, then comment out the same line.  This way it will not resort to Process environment variable used in this Docker deployment.
   
 # Launch Instructions
 To launch the BlazorMovies application and start the Kestrel server, run the following command in the root folder containing the deployed web application:
