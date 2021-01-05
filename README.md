@@ -8,7 +8,7 @@ This is a sample movie application we can use for our Dev-Ops training.  The app
 * [postgres](https://hub.docker.com/_/postgres?tab=tags&page=1&ordering=last_updated): PostGres 13.1
 
 # Blazor Movies Application Structure
-The BlazorMovies application contains the following project files that are specific to the solution:&nbsp
+The BlazorMovies application contains the following project files that are specific to the solution:&nbsp;
 * BlazorMovies.sln (The solution of the BlazorMovies web application, which contains the Blazor WebAssembly client project, the ASP.Net 5.0 Server project and the shared .Net 5.0 class libarries)
 * BlazorMovies.Server.csproj (The project containing the ASP.Net 5.0 Server dll that will host the Blazor WebAssembly application and contains the API endpoints of the application)
 * BlazorMovies.Client.csproj (The project that contains the Blazor WebAssembly client SPA application.  It will utilize .Net HTTP library to communicate with the ASP.Net 5.0 server.)
@@ -33,7 +33,7 @@ dotnet publish BlazorMovies.Server.csproj -c release -{Output directory of web a
 ```
 
 ## (Additional Instructions for Docker Compilation)
-If the application is to be run in a Docker container a small modificiation to the Startup.cs file in the BlazorMovies.Server project must be made.  This is because I had some issues figuring out how to properly use Environment Variables with Docker that will be remedied later, once I understand how it works.  For the time being, perform this simple modification.&nbsp
+If the application is to be run in a Docker container a small modificiation to the Startup.cs file in the BlazorMovies.Server project must be made.  This is because I had some issues figuring out how to properly use Environment Variables with Docker that will be remedied later, once I understand how it works.  For the time being, perform this simple modification.&nbsp;
 If running in Docker go the Startup.cs file and uncomment the following line at the top of the file if it is comment out:
 ```console
  #define _DOCKER
