@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /source
 ENV ASPNETCORE_ENVIRONMENT=Production
-ENV ASPNETCORE_URLS http://*:5000
-EXPOSE 5000
+#ENV ASPNETCORE_URLS http://*:5000
+#EXPOSE 5000
 
 # copy csproj and restore as distinct layers
 COPY *.sln .

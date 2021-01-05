@@ -1,12 +1,12 @@
 ﻿version: '3.4'
 
-networks:
- dockerapi-dev:
-  driver: bridge
+#networks:
+# dockerapi-dev:
+#  driver: bridge
 
 services:
  dockerapi:
-   image: dockerapi:latest
+   #image: dockerapi:latest
    depends_on:
     - "postgres_image"
    build:
@@ -16,8 +16,8 @@ services:
     - "8000:80"
    environment:
      DefaultConnection: "Server=postgres_image;Port=5432;Database=BlazorMovies;User Id=jontiefer;Password=test1234;"
-   networks:
-     - dockerapi-dev
+   #networks:
+   #  - dockerapi-dev
 
  postgres_image:
    image: postgres:13.1
@@ -31,7 +31,7 @@ services:
      POSTGRES_USER: "jontiefer"
      POSTGRES_PASSWORD: "test1234"
      POSTGRES_DB: "BlazorMovies"
-   networks:
-     - dockerapi-dev
+   #networks:
+   #  - dockerapi-dev
 volumes:
   db_volume:
