@@ -21,7 +21,7 @@ services:
    #  - dockerapi-dev
 
  postgres_image:
-   image: 433102177398.dkr.ecr.us-east-1.amazonaws.com/postgres:latest
+   image: postgres:13.1
    ports:
      - "5432"
    restart: always
