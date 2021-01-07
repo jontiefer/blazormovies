@@ -6,3 +6,4 @@
 /BlazorMovies/Shared/bin/*
 /PostGres-TestPwd.txt
 .vs/*
+docker-compose.yml

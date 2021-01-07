@@ -1,4 +1,4 @@
-#define _DOCKER
+#define _USERDSDB
 
 using Amazon.S3;
 using AutoMapper;
@@ -33,32 +33,18 @@ namespace BlazorMovies.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            if (_hostEnv.IsDevelopment())
-                Console.WriteLine($"LOG: Connection String: {_configuration.GetConnectionString("DefaultConnection_Dev")}");
-            else
-            {
-#if _DOCKER
-                Console.WriteLine($"LOG: Connection String: {Environment.GetEnvironmentVariable("DefaultConnection")}");
+#if _USERDSDB
+            var configConnSetting = "DefaultConnectionRDS";
 #else
-                Console.WriteLine($"LOG: Connection String: {Environment.GetEnvironmentVariable("DefaultConnection", EnvironmentVariableTarget.Machine)}");
+            var configConnSetting = "DefaultConnection";
 #endif
-            }
+            
+            Console.WriteLine($"LOG: Connection String: {_configuration.GetConnectionString(configConnSetting)}");            
 
-#if _DOCKER
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(
-                    _hostEnv.IsDevelopment() ?
-                    _configuration.GetConnectionString("DefaultConnection_Dev")
-                    : Environment.GetEnvironmentVariable("DefaultConnection"))
+                options.UseNpgsql(                    
+                    _configuration.GetConnectionString(configConnSetting))                    
                 .UseLowerCaseNamingConvention());
-#else
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(
-                    _hostEnv.IsDevelopment() ? 
-                    _configuration.GetConnectionString("DefaultConnection_Dev")
-                    : Environment.GetEnvironmentVariable("DefaultConnection", EnvironmentVariableTarget.Machine)) 
-                .UseLowerCaseNamingConvention());
-#endif
 
             services.AddAutoMapper(typeof(Startup));
 

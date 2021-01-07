@@ -3,6 +3,7 @@ WORKDIR /source
 ENV ASPNETCORE_ENVIRONMENT=Production
 #ENV ASPNETCORE_URLS http://*:5000
 #EXPOSE 5000
+#EXPOSE 80
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
