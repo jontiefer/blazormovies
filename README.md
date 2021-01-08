@@ -49,6 +49,6 @@ To view the BlazorMovies application home page navigate to the following address
 ```console
 http://localhost:5000
 ```
-# Issues
-## Amazon S3 Permissions not set within application.  Problems with modifying or creating records with images.
-The application is not fully functional and certain features related to modifying images in the program are not functioning due to me not implementing the appropriate IAM permissions within the application.  Any errors encountered adding new Actors, Movies or modifying images in the application will be encountered for this reason.
+
+#Docker Script to Run Container
+I created a script that can be used to run the BlazorMovies image, but is not included in the Git Repository.   The name of the script file is BlazorMoviesDockerRun.sh.  This script contains all the initialization settings, including AWS environment variables required for testing the BlazorMovies docker container on the local machine.
