@@ -7,3 +7,4 @@
 /PostGres-TestPwd.txt
 .vs/*
 docker-compose.yml
+BlazorMoviesDockerRun.sh

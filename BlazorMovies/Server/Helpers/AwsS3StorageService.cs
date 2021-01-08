@@ -163,7 +163,7 @@ namespace BlazorMovies.Server.Helpers
 
         private void ExtractFileLinkParameters(string fileLink, out string fileName, out string directory)
         {
-            fileLink = fileLink.Replace("http://", "").Replace("https://", "").Replace(".s3.amazonaws.com", "");
+            fileLink = fileLink.Replace("http://", "").Replace("https://", "").Replace(".s3.amazonaws.com", "").Replace(_s3BucketOptions.BucketName, "");
             var fileLinkAry = fileLink.Split("/");
             fileName = fileLinkAry[fileLinkAry.Length - 1];
             directory = "";
@@ -171,8 +171,12 @@ namespace BlazorMovies.Server.Helpers
             if (fileLinkAry.Length > 1)
             {
                 for (int i = 0; i < fileLinkAry.Length - 1; i++)
-                    directory += fileLinkAry[i] + "//";
+                    directory += fileLinkAry[i] + "/";
             }
+
+            if (directory.StartsWith("/"))
+                directory = directory.Remove(0, 1);
+
             directory = directory.Remove(directory.Length - 1, 1);
         }
     }

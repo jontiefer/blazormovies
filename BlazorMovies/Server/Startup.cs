@@ -53,7 +53,10 @@ namespace BlazorMovies.Server
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddRazorPages();
 
-            services.AddDefaultAWSOptions(_configuration.GetAWSOptions());
+            var awsOptions = _configuration.GetAWSOptions();
+            AWSUserHelper.ConfigureAWSOptions(awsOptions);
+
+            services.AddDefaultAWSOptions(awsOptions);
             services.AddAWSService<IAmazonS3>();
             services.AddScoped<IFileStorageService, AwsS3StorageService>();
             services.Configure<AwsS3BucketOptions>(_configuration.GetSection(nameof(AwsS3BucketOptions)))
