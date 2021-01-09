@@ -172,8 +172,11 @@ namespace BlazorMovies.Server.Controllers
 
             if (!string.IsNullOrWhiteSpace(movie.Poster))
             {
-                var moviePicture = Convert.FromBase64String(movie.Poster);
-                movieDB.Poster = await _fileStorageService.EditFile(moviePicture, movie.Title.Replace(" ", "") + ".jpg", _containerName, prevPictLink);
+                if (movie.Poster.Substring(0, 4).ToLower() != "http")
+                {
+                    var moviePicture = Convert.FromBase64String(movie.Poster);
+                    movieDB.Poster = await _fileStorageService.EditFile(moviePicture, movie.Title.Replace(" ", "") + ".jpg", _containerName, prevPictLink);
+                }
             }
             else if (!string.IsNullOrWhiteSpace(prevPictLink))
             {

@@ -1,0 +1,67 @@
+﻿@page "/s3/{BucketName}/objects"
+@inject IS3BucketRepository s3BucketRepository
+@*@inject NavigationManager navigationManager*@
+
+<div class="form-group">
+    <h1>@BucketName</h1>
+    <a class="btn btn-primary" href="/s3">Return to Bucket List</a>
+</div>
+
+@if (Objects != null && Objects.Count > 0)
+{
+    <GenericList List="Objects">
+        <WholeListTemplate>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Last Modified</th>
+                        <th>ETag</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Objects)
+                    {
+                        <tr>
+                            <td>@item.Key</td>
+                            <td>@item.LastModified.ToLongDateString()</td>
+                            <td>@item.ETag</td>
+                            <td>@item.Size.ToString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </WholeListTemplate>
+    </GenericList>
+}
+else if (Objects == null)
+{
+    <h4 style="color: red">ACCESS DENIED - You do not have permission to list the objects of this bucket.</h4>
+}
+else if (Objects.Count == 0)
+{
+    <h3>There are no objects contained in this bucket.</h3>
+}
+
+@code {
+    [Parameter] public string BucketName { get; set; }
+    List<ObjectS3DTO> Objects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadS3Objects();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("LOG: " + ex.ToString());
+        }
+    }
+
+    private async Task LoadS3Objects()
+    {
+        Objects = await s3BucketRepository.ListObjects(BucketName);
+    }
+}

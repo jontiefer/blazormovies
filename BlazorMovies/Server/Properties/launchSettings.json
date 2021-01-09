@@ -12,6 +12,9 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "AWS_REGION": "us-east-1",
+        "AWS_SECRET_ACCESS_KEY": "HuY2fWV1lDTRq0G7WQQVU9TiV5Gh85tR5GYD3r4o",
+        "AWS_ACCESS_KEY_ID": "AKIAWJVXGYR3NAART75E",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"

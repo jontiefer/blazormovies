@@ -1,0 +1,59 @@
+﻿@page "/s3"
+@inject IS3BucketRepository s3BucketRepository
+@*@inject NavigationManager navigationManager*@
+
+<h3>S3 Bucket List</h3>
+
+@if (Buckets != null && Buckets.Count > 0)
+{
+    <GenericList List="Buckets">
+        <WholeListTemplate>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Bucket Name</th>
+                        <th>Creation Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Buckets)
+                    {
+                        <tr>
+                            <td><a href="s3/@item.BucketName/objects">@item.BucketName</a></td>
+                            <td>@item.CreationDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </WholeListTemplate>
+    </GenericList>
+}
+else if (Buckets == null)
+{
+    <h4 style="color: red">ACCESS DENIED - You do not have permission to list buckets for this account.</h4>
+}
+else if (Buckets.Count == 0)
+{
+    <h4>There are no buckets to display for this account.</h4>
+}
+
+@code {
+    List<BucketS3DTO> Buckets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadS3Buckets();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("LOG: " + ex.ToString());
+        }
+    }
+
+    private async Task LoadS3Buckets()
+    {
+        Buckets = await s3BucketRepository.ListBuckets();
+    }
+}

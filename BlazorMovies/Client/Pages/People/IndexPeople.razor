@@ -1,5 +1,6 @@
 ﻿@page "/people"
 @inject IPersonRepository personRepository
+@inject NavigationManager navigationManager
 
 <h3>Index People</h3>
 
@@ -24,7 +25,8 @@
                 {
                     <tr>
                         <td>
-                            <a class="btn btn-success" href="/person/edit/@item.Id">Edit</a>
+                            @*<a class="btn btn-success" href="/person/edit/@item.Id">Edit</a>*@
+                            <a class="btn btn-success" href="" @onclick="() => EditPerson(item.Id)" @onclick:preventDefault>Edit</a>
                             <button class="btn btn-danger" @onclick="(() => DeletePerson(item.Id))">Delete</button>
                         </td>
                         <td>@item.Name</td>
@@ -63,6 +65,11 @@
     {
         paginationDTO.Page = page;
         await LoadPeople();
+    }
+
+    private void EditPerson(int id)
+    {
+        navigationManager.NavigateTo($"/person/edit/{id}", forceLoad: true);
     }
 
     private async Task DeletePerson(int id)

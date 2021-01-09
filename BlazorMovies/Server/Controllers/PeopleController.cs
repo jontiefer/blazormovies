@@ -81,8 +81,11 @@ namespace BlazorMovies.Server.Controllers
 
             if (!string.IsNullOrWhiteSpace(person.Picture))
             {
-                var personPicture = Convert.FromBase64String(person.Picture);
-                personDB.Picture = await _fileStorageService.EditFile(personPicture, person.Name.Replace(" ", "") + ".jpg", "movies/actors", prevPictLink);
+                if (person.Picture.Substring(0, 4).ToLower() != "http")
+                {
+                    var personPicture = Convert.FromBase64String(person.Picture);
+                    personDB.Picture = await _fileStorageService.EditFile(personPicture, person.Name.Replace(" ", "") + ".jpg", "movies/actors", prevPictLink);
+                }
             }
             else if(!string.IsNullOrWhiteSpace(prevPictLink))
             {

@@ -55,12 +55,14 @@ namespace BlazorMovies.Server
 
             var awsOptions = _configuration.GetAWSOptions();
             AWSUserHelper.ConfigureAWSOptions(awsOptions);
-
+            
             services.AddDefaultAWSOptions(awsOptions);
             services.AddAWSService<IAmazonS3>();
             services.AddScoped<IFileStorageService, AwsS3StorageService>();
+            services.AddScoped<IS3BucketService, AWSS3BucketService>();
             services.Configure<AwsS3BucketOptions>(_configuration.GetSection(nameof(AwsS3BucketOptions)))
                 .AddSingleton(x => x.GetRequiredService<IOptions<AwsS3BucketOptions>>().Value);
+            
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =

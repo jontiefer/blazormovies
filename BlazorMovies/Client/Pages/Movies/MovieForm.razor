@@ -83,18 +83,15 @@
         Selected = SelectedGenres.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.Name)).ToList();
         NotSelected = NotSelectedGenres.Select(x => new MultipleSelectorModel(x.Id.ToString(), x.Name)).ToList();
 
-        if (!string.IsNullOrEmpty(Movie.Poster))
-        {
-            imageURL = Movie.Poster;
-            Movie.Poster = null;
-        }
+        if (!string.IsNullOrEmpty(Movie.Poster))        
+            imageURL = Movie.Poster;                    
     }
 
     private void PosterSelected(string imageBase64)
     {
         Movie.Poster = imageBase64;
         imageURL = null;
-        Console.WriteLine(imageBase64);
+        //Console.WriteLine(imageBase64);
     }
 
     private async Task<IEnumerable<Person>> SearchMethod(string searchText)

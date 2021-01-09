@@ -1,5 +1,4 @@
-﻿
-<EditForm Model="Person" OnValidSubmit="OnValidSubmit">
+﻿<EditForm Model="Person" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
     <div class="form-group">
@@ -35,20 +34,17 @@
 @code {
     [Parameter] public Person Person { get; set; }
     [Parameter] public EventCallback OnValidSubmit { get; set; }
-    string imageURL;
+    private string imageURL = "";
 
     protected override void OnInitialized()
     {
         if (!string.IsNullOrEmpty(Person.Picture))
-        {
-            imageURL = Person.Picture;
-            Person.Picture = null;
-        }
+            imageURL = Person.Picture;                    
     }
 
     private void OnSelectedImage(string imageBase64)
     {
         Person.Picture = imageBase64;
-        imageURL = null;
+        imageURL = "";
     }
 }

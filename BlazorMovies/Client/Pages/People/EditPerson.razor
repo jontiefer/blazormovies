@@ -13,16 +13,22 @@
     [Parameter] public int PersonId { get; set; }
 
     Person Person;
+    bool _firstRender = true;
 
     protected async override Task OnInitializedAsync()
     {
         Person = await personRepository.GetPersonById(PersonId);
 
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 
     private async Task Edit()
-    {
+    {        
         await personRepository.UpdatePerson(Person);
+
         navigationManager.NavigateTo("people");
     }
 }

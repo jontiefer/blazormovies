@@ -33,6 +33,7 @@ namespace BlazorMovies.Client
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IMoviesRepository, MoviesRepository>();
+            services.AddScoped<IS3BucketRepository, S3BucketRepository>();            
         }
     }
 }

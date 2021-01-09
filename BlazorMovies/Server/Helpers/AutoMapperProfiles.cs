@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Amazon.S3.Model;
+using AutoMapper;
+using BlazorMovies.Shared.DTOs;
 using BlazorMovies.Shared.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,9 @@ namespace BlazorMovies.Server.Helpers
 
             CreateMap<Movie, Movie>()
                 .ForMember(x => x.Poster, option => option.Ignore());
+
+            CreateMap<S3Bucket, BucketS3DTO>();
+            CreateMap<S3Object, ObjectS3DTO>();
         }
     }
 }

@@ -178,6 +178,6 @@ namespace BlazorMovies.Server.Helpers
                 directory = directory.Remove(0, 1);
 
             directory = directory.Remove(directory.Length - 1, 1);
-        }
+        }        
     }
 }
