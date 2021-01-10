@@ -50,5 +50,5 @@ To view the BlazorMovies application home page navigate to the following address
 http://localhost:5000
 ```
 
-#Docker Script to Run Container
+# Docker Script to Run Container
 I created a script that can be used to run the BlazorMovies image, but is not included in the Git Repository.   The name of the script file is BlazorMoviesDockerRun.sh.  This script contains all the initialization settings, including AWS environment variables required for testing the BlazorMovies docker container on the local machine.
