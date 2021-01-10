@@ -28,16 +28,20 @@
         </WholeListTemplate>
     </GenericList>
 }
-else if (Buckets == null)
+else if (Buckets == null && bucketsLoaded)
 {
     <h4 style="color: red">ACCESS DENIED - You do not have permission to list buckets for this account.</h4>
 }
-else if (Buckets.Count == 0)
+else if (Buckets?.Count == 0 && bucketsLoaded)
 {
     <h4>There are no buckets to display for this account.</h4>
 }
+else
+{    
+}
 
 @code {
+    bool bucketsLoaded = false;
     List<BucketS3DTO> Buckets;
 
     protected override async Task OnInitializedAsync()
@@ -49,6 +53,10 @@ else if (Buckets.Count == 0)
         catch (Exception ex)
         {
             Console.WriteLine("LOG: " + ex.ToString());
+        }
+        finally
+        {
+            bucketsLoaded = true;
         }
     }
 

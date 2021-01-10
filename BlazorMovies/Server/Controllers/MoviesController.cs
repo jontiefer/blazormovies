@@ -209,6 +209,11 @@ namespace BlazorMovies.Server.Controllers
             var movie = await _context.Movies.FirstOrDefaultAsync(x => x.Id == id);
             if (movie == null) return NotFound();
 
+            if(movie.Poster != null)
+            {
+                await _fileStorageService.DeleteFileByLink(movie.Poster);
+            }
+
             _context.Remove(movie);
             await _context.SaveChangesAsync();
             return NoContent();

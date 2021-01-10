@@ -1,6 +1,6 @@
 ﻿<div class="individual-movie-container">
     <a href="@movieURL">
-        <img src="@Movie.Poster" alt="Poster" class="movie-poster" />
+        <img src="@Movie.Poster?@DateTime.UtcNow.ToLongTimeString().Replace(':', '-').Replace(" ", "")" alt="Poster" class="movie-poster" />
     </a>
     <p><a href="@movieURL">@Movie.TitleBrief</a></p>
     <div>

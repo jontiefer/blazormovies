@@ -35,18 +35,22 @@
         </WholeListTemplate>
     </GenericList>
 }
-else if (Objects == null)
+else if (Objects == null && objectsLoaded)
 {
     <h4 style="color: red">ACCESS DENIED - You do not have permission to list the objects of this bucket.</h4>
 }
-else if (Objects.Count == 0)
+else if (Objects?.Count == 0 && objectsLoaded)
 {
     <h3>There are no objects contained in this bucket.</h3>
+}
+else
+{
 }
 
 @code {
     [Parameter] public string BucketName { get; set; }
     List<ObjectS3DTO> Objects;
+    bool objectsLoaded = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -57,6 +61,10 @@ else if (Objects.Count == 0)
         catch (Exception ex)
         {
             Console.WriteLine("LOG: " + ex.ToString());
+        }
+        finally
+        {
+            objectsLoaded = true;
         }
     }
 

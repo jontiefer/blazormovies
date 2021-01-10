@@ -102,6 +102,11 @@ namespace BlazorMovies.Server.Controllers
             var person = await _context.People.FirstOrDefaultAsync(x => x.Id == id);
             if (person == null) return NotFound();
 
+            if(!string.IsNullOrWhiteSpace(person.Picture))
+            {
+                await _fileStorageService.DeleteFileByLink(person.Picture);
+            }
+
             _context.Remove(person);
             await _context.SaveChangesAsync();
             return NoContent();

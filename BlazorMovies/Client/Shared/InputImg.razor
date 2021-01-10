@@ -7,7 +7,7 @@
 
 <div>
     @if (imageBase64 != null)
-    {
+    {     
         <div>
             <div style="margin:10px">
                 <img src="data:image/jpeg;base64, @imageBase64" style="width: 400px;" />
@@ -15,10 +15,10 @@
         </div>
     }
     @if (ImageURL != null)
-    {
+    {                
         <div>
             <div style="margin:10px">
-                <img src="@ImageURL" style="width: 400px;" />
+                <img src="@ImageURL?@DateTime.UtcNow.ToLongTimeString().Replace(':', '-').Replace(" ", "")" style="width: 400px;" />                
             </div>
         </div>
     }
