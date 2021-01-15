@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blazormovies
+  labels:
+    app: blazormovies
+spec:
+  selector:
+    matchLabels:
+      app: blazormovies
+  replicas: 2
+  template:
+    metadata:
+      name: blazormovies
+      labels:
+        app: blazormovies
+    spec:
+      containers:
+        - name: blazormovies
+          image: 433102177398.dkr.ecr.us-east-1.amazonaws.com/blazormovies:latest
